@@ -66,21 +66,6 @@ int	destroy(t_data *data)
 	return (free_all(data), exit(0), 0);
 }
 
-// int	key_press(int key_code, t_data *data)
-// {
-// 	if (key_code == ESC)
-// 		return (destroy(data));
-// 	else if (key_code == A)
-// 		move(&data, data, data.player_x - 1, data.player_y);
-// 	else if (key_code == D)
-// 		move(&data, data, data.player_x + 1, data.player_y);
-// 	else if (key_code == S)
-// 		move(&data, data, data.player_x, data.player_y + 1);
-// 	else if (key_code == W)
-// 		move(&data, data, data.player_x, data.player_y - 1);
-// 	return (1);
-// }
-
 void	print_debug(t_data *data)
 {
 	ft_dprintf(2, "\nC_red %d\nC_green %d\nC_blue %d\n\nF_red %d\nF_green %d\nF_blue %d\n\nP_x %d\nP_y %d\norientation %c\n\n", \
@@ -113,12 +98,18 @@ static void confert_parssing(t_data *data, t_master *master)
 	master->map.floor_color = data->floor_color;
 	master->player.x = data->player_x;
 	master->player.y = data->player_y;
-	// faire la fontion pour spawn orientation
 	master->imgs.exit_img = data->no_xpm;
 	master->imgs.floor_img = data->so_xpm;
 	master->imgs.player_img = data->ea_xpm;
 	master->imgs.wall_img = data->we_xpm;
 	master->mlx = data->mlx;
-
+	if (data->spawning_orientation == 'N')
+		master->player.dir = PI/2;
+	else if (data->spawning_orientation == 'S')
+		master->player.dir = 3*PI/2;
+	else if (data->spawning_orientation == 'E')
+		master->player.dir = 0;
+	else
+		master->player.dir = PI;
 }
 // free_all(&data);

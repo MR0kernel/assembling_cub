@@ -266,8 +266,8 @@ void	draw_block(t_master *master, t_img *canvas, t_xy origin, t_img *img);
 
 void	draw_column(t_master *master, \
 					t_img *img, t_int_xy origin, t_int_xy dest);
-void	draw_sky(t_img *canvas);
-void	draw_floor(t_img *canvas);
+void	draw_sky(t_img *canvas, t_master *master);
+void	draw_floor(t_img *canvas, t_master *master);
 
 t_ray	raycast_y(t_master *master, t_player player);
 t_ray	raycast_x(t_master *master, t_player player);
@@ -278,8 +278,5 @@ void	draw_mini_player(t_master *master, t_xy origin);
 void	render_3d_map(t_master *master, t_player player);
 void	draw_wall(t_master *master, int x);
 void	init_tools(t_player *ray_player, t_player *player);
-
-// FOR TESTING PURPOSES ONLY
-void	print_map(char **map, size_t y_index);
 
 #endif

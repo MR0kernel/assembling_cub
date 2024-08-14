@@ -36,7 +36,7 @@ inline t_ray	raycast_y(t_master *master, t_player player)
 		if (master->map.original_map[(size_t)(ret.y - (sp < 0))] \
 									[(size_t)(ret.x)] != '0' && \
 			master->map.original_map[(size_t)(ret.y - (sp < 0))] \
-									[(size_t)(ret.x)] != 'P')
+									[(size_t)(ret.x)] != ' ')
 			break ;
 		ret.x += p_.x;
 		ret.y += p_.y;
@@ -65,7 +65,7 @@ inline t_ray	raycast_x(t_master *master, t_player player)
 		if (master->map.original_map[(size_t)ret.y] \
 				[(size_t)(ret.x - (cp < 0))] != '0' && \
 			master->map.original_map[(size_t)ret.y] \
-				[(size_t)(ret.x - (cp < 0))] != 'P')
+				[(size_t)(ret.x - (cp < 0))] != ' ')
 			break ;
 		ret.x += p_.x;
 		ret.y += p_.y;

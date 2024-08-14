@@ -72,8 +72,8 @@ static void	draw_static_objects(t_master *master, int x, int y)
 int	draw_map(t_master *master)
 {
 	clear_canvas(SCREEN_SIZE_X, SCREEN_SIZE_Y, master->canvas);
-	draw_floor(master->canvas);
-	draw_sky(master->canvas);
+	draw_floor(master->canvas, master);
+	draw_sky(master->canvas, master);
 	render_3d_map(master, master->player);
 	mlx_put_image_to_window(master->mlx, master->win, master->canvas, 0, 0);
 	character_mouvement(master);
@@ -81,13 +81,13 @@ int	draw_map(t_master *master)
 }
 // draw_mini_map(master, 1, 1);
 
-void	draw_sky(t_img *canvas)
+void	draw_sky(t_img *canvas, t_master *master)
 {
 	int				x;
 	int				y;
 	unsigned int	sky_color;
 
-	sky_color = SKY_COLOR;
+	sky_color = master->map.ceiling_color;
 	y = 0;
 	while (y < SCREEN_SIZE_Y / 2)
 	{
@@ -101,13 +101,13 @@ void	draw_sky(t_img *canvas)
 	}
 }
 
-void	draw_floor(t_img *canvas)
+void	draw_floor(t_img *canvas, t_master *master)
 {
 	int				x;
 	int				y;
 	unsigned int	floor_color;
 
-	floor_color = FLOOR_COLOR;
+	floor_color = master->map.floor_color;
 	y = SCREEN_SIZE_Y / 2;
 	while (y < SCREEN_SIZE_Y)
 	{
