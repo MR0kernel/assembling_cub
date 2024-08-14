@@ -33,6 +33,7 @@ void	fill_player(t_data *data, char orientation, int j, int i)
 	data->spawning_orientation = orientation;
 	data->player_y = j;
 	data->player_x = i;
+	data->map[j][i] = '0';
 }
 
 void	check_map(t_data *data, char **map, int i)

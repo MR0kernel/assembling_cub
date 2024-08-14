@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static int	validation(t_master *master, t_xy next_pos);
+static int	validation(t_master *master, double x, double y);
 static void	move_left_right(t_master *master);
 static void	rotate(t_master *master, double angle);
 static void	move_back_foward(t_master *master);
@@ -44,15 +44,22 @@ static void	move_left_right(t_master *master)
 		next_pos.x = master->player.x + (sin(master->player.dir) / MS);
 		next_pos.y = master->player.y - (cos(master->player.dir) / MS);
 	}
-	if (validation(master, next_pos) == 0)
-	{
-		master->map.original_map[(int)master->player.y] \
-								[(int)master->player.x] = '0';
+	if (validation(master, next_pos.x, master->player.y) == 0)
 		master->player.x = next_pos.x;
+	if (validation(master, master->player.x, next_pos.y) == 0)
 		master->player.y = next_pos.y;
-	}
 	master->player.dir_x = cos(master->player.dir);
 	master->player.dir_y = sin(master->player.dir);
+}
+
+static int	validation(t_master *master, double x, double y)
+{
+	if (x < 0 || y < 0 || x >= master->map.map_size_x \
+		|| y >= master->map.map_size_y)
+		return (-1);
+	if (master->map.original_map[(int)(y)][(int)(x)] != '0')
+		return (-1);
+	return (0);
 }
 
 static void	move_back_foward(t_master *master)
@@ -71,26 +78,12 @@ static void	move_back_foward(t_master *master)
 		next_pos.x = master->player.x - (cos(master->player.dir) / MS);
 		next_pos.y = master->player.y - (sin(master->player.dir) / MS);
 	}
-	if (validation(master, next_pos) == 0)
-	{
-		master->map.original_map[(int)master->player.y] \
-						[(int)master->player.x] = '0';
+	if (validation(master, next_pos.x, master->player.y) == 0)
 		master->player.x = next_pos.x;
+	if (validation(master, master->player.x, next_pos.y) == 0)
 		master->player.y = next_pos.y;
-	}
 	master->player.dir_x = cos(master->player.dir);
 	master->player.dir_y = sin(master->player.dir);
-}
-
-static int	validation(t_master *master, t_xy next_pos)
-{
-	if ((next_pos.x < 0 || next_pos.y < 0 || \
-			next_pos.x >= master->map.map_size_x \
-			|| next_pos.y >= master->map.map_size_y) \
-			|| master->map.original_map[(int)next_pos.y] \
-								[(int)next_pos.x] != '0')
-		return (-1);
-	return (0);
 }
 
 static void	rotate(t_master *master, double angle)

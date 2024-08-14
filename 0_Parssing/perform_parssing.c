@@ -81,8 +81,8 @@ static void	confert_parssing(t_data *data, t_master *master)
 	master->map.original_map = data->map;
 	master->map.ceiling_color = data->ceiling_color;
 	master->map.floor_color = data->floor_color;
-	master->player.x = ((double)data->player_x + 0.005);
-	master->player.y = ((double)data->player_y);
+	master->player.x = ((double)data->player_x + 0.5);
+	master->player.y = ((double)data->player_y + 0.5);
 	master->imgs.exit_img = data->no_xpm;
 	master->imgs.floor_img = data->so_xpm;
 	master->imgs.player_img = data->ea_xpm;
