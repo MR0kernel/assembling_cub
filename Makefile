@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -O2 -funroll-loops
@@ -41,7 +41,12 @@ SRC =	so_long.c \
 		5_event_handling/key_press.c \
 		error_general_hendler/error_general_hendler.c \
 		error_general_hendler/free.c \
-		error_general_hendler/free_images.c 
+		error_general_hendler/free_images.c \
+		0_Parssing/check_map.c \
+		0_Parssing/check_utils.c \
+		0_Parssing/color.c \
+		0_Parssing/perform_parssing.c \
+		0_Parssing/parse.c 0_Parssing/xpm.c
 
 all: $(NAME)
 

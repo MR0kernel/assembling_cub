@@ -26,7 +26,7 @@ int	main(int number_of_args, char **args)
 	// perform_file_tests(master);
 	if (perform_parssing(number_of_args, args, master))
 		basic_error_handler(master, 1);
-	master->mlx = mlx_init();
+	// master->mlx = mlx_init();
 	if (master->mlx == NULL)
 		second_class_error_handler(master, 10);
 	// launch_images(master);

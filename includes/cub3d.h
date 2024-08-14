@@ -17,6 +17,7 @@
 
 # include <stdio.h>
 # include <math.h>
+# include <errno.h>
 # include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"
 # include "../gnl/get_next_line.h"
