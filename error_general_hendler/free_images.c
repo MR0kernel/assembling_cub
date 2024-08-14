@@ -26,6 +26,4 @@ void	free_images(t_master *master)
 		mlx_destroy_image(master->mlx, master->imgs.player_img);
 	if (master->canvas != NULL)
 		mlx_destroy_image(master->mlx, master->canvas);
-	if (master->mini_map != NULL)
-		mlx_destroy_image(master->mlx, master->mini_map);
 }

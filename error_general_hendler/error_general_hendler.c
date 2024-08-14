@@ -19,7 +19,8 @@ void	basic_error_handler(t_master *master, int error_code)
 	else if (error_code == 2)
 		ft_dprintf(2, "given map is invalid, must be a .ber map\n");
 	else if (error_code == 3)
-		ft_dprintf(2, "can't open given map, no rights or file does not exist\n");
+		ft_dprintf(2, "can't open given map, no \
+				rights or file does not exist\n");
 	else if (error_code == 4)
 		ft_dprintf(2, "fail getting map, maybe empty file ? \n");
 	else if (error_code == 5)
@@ -27,12 +28,11 @@ void	basic_error_handler(t_master *master, int error_code)
 	else if (error_code == 6)
 	{
 		ft_dprintf(2, "malloc failed xD\n");
-		if (master->map.original_map)
-			free_map(master->map.original_map, master->map.map_size_y);
 		if (master)
 			free(master);
 		exit(EXIT_FAILURE);
 	}
+	ft_lstclear(&master->lst_map, &free);
 	free(master);
 	exit(EXIT_FAILURE);
 }
@@ -59,7 +59,7 @@ void	second_class_error_handler(t_master *master, int error_code)
 		ft_dprintf(2, "t Einstein removed one of the images\n");
 	else if (error_code == 10)
 		ft_dprintf(2, "mlx failled to init\n");
-	free_map(master->map.original_map, master->map.map_size_y);
+	free(master->map.original_map);
 	basic_error_handler(master, 0);
 }
 

@@ -19,11 +19,6 @@ void	init_master_struct(t_master *master)
 	master->imgs.collectible_img = NULL;
 	master->imgs.exit_img = NULL;
 	master->imgs.player_img = NULL;
-	master->player.x = 0;
-	master->player.y = 0;
-	master->player.dir = 0;
-	master->player.dir_x = cos(master->player.dir);
-	master->player.dir_y = sin(master->player.dir);
 	master->map.original_map = NULL;
 	master->map.map_size_x = 0;
 	master->map.map_size_y = 0;
@@ -31,6 +26,17 @@ void	init_master_struct(t_master *master)
 	master->collectibles = 0;
 	master->mlx = NULL;
 	master->win = NULL;
+	master->player.x = 0;
+	master->player.y = 0;
+	master->player.dir = 0;
+	master->player.dir_x = cos(master->player.dir);
+	master->player.dir_y = sin(master->player.dir);
+	master->player.down = 0;
+	master->player.up = 0;
+	master->player.left = 0;
+	master->player.rigth = 0;
+	master->player.rotate_left = 0;
+	master->player.rotate_right = 0;
 }
 
 void	init_tools(t_player *ray_player, t_player *player)

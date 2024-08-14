@@ -34,12 +34,12 @@ static void	move_left_right(t_master *master)
 
 	next_pos.x = 0;
 	next_pos.y = 0;
-	if (master->player.left)
+	if (master->player.rigth)
 	{
 		next_pos.x = master->player.x - (sin(master->player.dir) / MS);
 		next_pos.y = master->player.y + (cos(master->player.dir) / MS);
 	}
-	else if (master->player.rigth)
+	else if (master->player.left)
 	{
 		next_pos.x = master->player.x + (sin(master->player.dir) / MS);
 		next_pos.y = master->player.y - (cos(master->player.dir) / MS);

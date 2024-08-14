@@ -77,7 +77,6 @@ static int	get_texture_x(t_master *master, t_img *img)
 	else
 		return ((master->ray.x - (int)master->ray.x) * img->width);
 }
-void	print_map(char **map);
 
 inline void	render_3d_map(t_master *master, t_player player)
 {
@@ -86,11 +85,7 @@ inline void	render_3d_map(t_master *master, t_player player)
 	double		ray_dir;
 	double		ray_increment;
 
-	print_map(master->map.original_map);
 	init_tools(&ray_player, &player);
-	printf("player x: %f\nplayer y: %f\n", player.x, player.y);
-	printf("ray_player x: %f\nray_player y: %f\n", ray_player.x, ray_player.y);
-	exit(1);
 	x = 0;
 	gft_bzero(master->list_of_rays, sizeof(t_ray) * SCREEN_SIZE_X);
 	ray_dir = player.dir - degree_to_radian(FOV / 2);
@@ -115,24 +110,4 @@ inline void	render_3d_map(t_master *master, t_player player)
 static float	degree_to_radian(float degree)
 {
 	return (degree * (PI / 180));
-}
-
-void	print_map(char **map)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			ft_putchar_fd(map[i][j], 1);
-			j++;
-		}
-		// ft_putchar_fd('\n', 1);
-		j = 0;
-		i++;
-	}
 }

@@ -20,16 +20,11 @@ int	main(int number_of_args, char **args)
 	if (master == NULL)
 		basic_error_handler(master, 6);
 	init_master_struct(master);
-	// if (number_of_args != 2)
-	// 	basic_error_handler(master, 1);
-	// master->given_map = args[1];
-	// perform_file_tests(master);
 	if (perform_parssing(number_of_args, args, master))
 		basic_error_handler(master, 1);
-	// master->mlx = mlx_init();
+	init_map_size(master);
 	if (master->mlx == NULL)
 		second_class_error_handler(master, 10);
-	// launch_images(master);
 	launch_window(master);
 	fifth_class_error_handler(master, 0);
 	return (0);

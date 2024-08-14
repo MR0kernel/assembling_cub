@@ -23,7 +23,6 @@ SRC =	so_long.c \
 		general_purpose_functions/size_and_search.c \
 		general_purpose_functions/map_stock.c \
 		general_purpose_functions/ft_bzero.c \
-		1_given_file_tests/1_file_tests_master.c \
 		1_given_file_tests/ends_with_ber.c \
 		1_given_file_tests/is_closed.c \
 		1_given_file_tests/objects_are_valid.c \
@@ -54,18 +53,19 @@ all: $(NAME)
 $(NAME): $(SRC) includes/cub3d.h FORCE
 	make -C mlx_linux
 	$(CC) $(CFLAGS) $(SRC) $(MLXFLAGS) $(LIBFT) -o $(NAME)
-	# norminette \
-	# 			general_purpose_functions \
-	# 			1_given_file_tests \
-	# 			2_try_load_images \
-	# 			3_mlx_window_launch \
-	# 			4_draw_funtions \
-	# 			5_event_handling \
-	# 			error_general_hendler \
-	# 			so_long.c \
-	# 			includes \
-	# 			gnl \
-	# 			ft_dprintf \
+	norminette \
+				general_purpose_functions \
+				0_Parssing \
+				1_given_file_tests \
+				2_try_load_images \
+				3_mlx_window_launch \
+				4_draw_funtions \
+				5_event_handling \
+				error_general_hendler \
+				so_long.c \
+				includes \
+				gnl \
+				ft_dprintf \
 
 $(LIBFT): FORCE
 	@make --no-print-directory -C ./libft bonus

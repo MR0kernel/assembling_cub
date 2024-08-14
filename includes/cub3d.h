@@ -61,11 +61,7 @@
 # define ERRCHARC "Error\nIncorrect char in %c colors : \"%c\"\n"
 # define ERRCHARM "Error\nIncorrect char in map : \"%c\"\n"
 # define ERREMPTYLINE "Error\nMap can not be separated by empty line(s)\n"
-
-
-
-
-
+// PARSSING
 
 typedef struct s_imgs
 {
@@ -74,7 +70,7 @@ typedef struct s_imgs
 	t_img	*collectible_img;
 	t_img	*exit_img;
 	t_img	*player_img;
-}	t_imgs;   
+}	t_imgs;
 
 typedef struct s_player
 {
@@ -136,8 +132,38 @@ typedef struct s_map
 	int		floor_color;
 }	t_map;
 
+// PARSSING
+typedef struct s_data
+{
+	char	**map;
+	int		player_x;
+	int		player_y;
+	int		ceiling_color;
+	int		floor_color;
+	char	spawning_orientation;
+
+	int		fd;
+	char	*line;
+	void	*mlx;
+	void	*mlx_win;
+	void	*no_xpm;
+	void	*so_xpm;
+	void	*ea_xpm;
+	void	*we_xpm;
+	int		c_red;
+	int		c_green;
+	int		c_blue;
+	int		f_red;
+	int		f_green;
+	int		f_blue;
+	t_list	*lst_map;
+}					t_data;
+// PARSSING 
+
 typedef struct s_master
 {
+	t_list		*lst_map;
+
 	char		*given_map;
 	size_t		collectibles;
 	t_map		map;
@@ -157,35 +183,11 @@ typedef struct s_master
 	int			wall_height;
 
 	t_ray		list_of_rays[SCREEN_SIZE_X];
+	t_data		*data;
 
 }	t_master;
 
-typedef struct s_data
-{
-	char				**map;
-	int					player_x;
-	int					player_y;
-	int					ceiling_color;
-	int					floor_color;
-	char				spawning_orientation;
-
-	int		fd;
-	char	*line;
-	void	*mlx;
-	void	*mlx_win;
-	void	*no_xpm;
-	void	*so_xpm;
-	void	*ea_xpm;
-	void	*we_xpm;
-	int		c_red;
-	int		c_green;
-	int		c_blue;
-	int		f_red;
-	int		f_green;
-	int		f_blue;
-	t_list	*lst_map;
-}					t_data;
-
+// PARSSING 
 void	free_all(t_data *data);
 void	parse(t_data *data);
 void	xpm_load(t_data *data, void **xpm_ptr);
@@ -195,8 +197,7 @@ bool	is_player(char c);
 bool	is_void(char c);
 bool	map_is_not_finished(char **map, int j);
 int		perform_parssing(int argc, char **argv, t_master *master);
-
-
+void	init_map_size(t_master *master);
 // PARSSING 
 
 /*

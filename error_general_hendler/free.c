@@ -24,3 +24,10 @@ void	free_map(char **map, size_t y_index)
 	}
 	free(map);
 }
+
+void	free_all(t_data *data)
+{
+	free(data->line);
+	if (data->fd != -1)
+		close(data->fd);
+}
