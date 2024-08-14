@@ -1,0 +1,17 @@
+
+SO               ./textures/wall70x70.xpm
+
+
+
+EA        ./textures/floor70x70_1.xpm
+C            000,000,000
+
+
+F    151,155,166
+WE ./textures/player_hack70x70_1.xpm
+
+NO         ./textures/tacos70x70.xpm
+ 11
+101
+1W1
+ 11

@@ -61,14 +61,18 @@ int	perform_parssing(int argc, char **argv, t_master *master)
 
 	if (argc != 2 || ft_strlen(argv[1]) < 5 || \
 	!ft_rstrnstr(argv[1], ".cub", 4))
-		return (ft_dprintf(2, "Error\narg not valide\n"), 1);
+	{
+		ft_dprintf(2, "Error\narg not valide\n");
+		exit(1);
+	}
 	set_data(&data, argv[1]);
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (free_all(&data), 1);
 	parse(&data);
 	confert_parssing(&data, master);
-	free_all(&data);
+	if (data.fd != -1)
+		close(data.fd);
 	return (0);
 }
 
@@ -77,22 +81,21 @@ static void	confert_parssing(t_data *data, t_master *master)
 	master->map.original_map = data->map;
 	master->map.ceiling_color = data->ceiling_color;
 	master->map.floor_color = data->floor_color;
-	master->player.x = data->player_x;
-	master->player.y = data->player_y;
+	master->player.x = ((double)data->player_x + 0.005);
+	master->player.y = ((double)data->player_y);
 	master->imgs.exit_img = data->no_xpm;
 	master->imgs.floor_img = data->so_xpm;
 	master->imgs.player_img = data->ea_xpm;
 	master->imgs.wall_img = data->we_xpm;
 	master->mlx = data->mlx;
 	if (data->spawning_orientation == 'N')
-		master->player.dir = PI / 2;
+		master->player.dir = 4.71238898;
 	else if (data->spawning_orientation == 'S')
-		master->player.dir = 3 * PI / 2;
+		master->player.dir = 1.570796327;
 	else if (data->spawning_orientation == 'E')
 		master->player.dir = 0;
 	else
-		master->player.dir = PI;
+		master->player.dir = 3.141592653;
 	master->data = data;
 	master->lst_map = data->lst_map;
 }
-// free_all(&data);

@@ -33,7 +33,6 @@ void	basic_error_handler(t_master *master, int error_code)
 		exit(EXIT_FAILURE);
 	}
 	ft_lstclear(&master->lst_map, &free);
-	free(master);
 	exit(EXIT_FAILURE);
 }
 

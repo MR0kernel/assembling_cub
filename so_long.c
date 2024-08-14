@@ -14,18 +14,15 @@
 
 int	main(int number_of_args, char **args)
 {
-	t_master	*master;
+	t_master	master;
 
-	master = malloc(sizeof(t_master));
-	if (master == NULL)
-		basic_error_handler(master, 6);
-	init_master_struct(master);
-	if (perform_parssing(number_of_args, args, master))
-		basic_error_handler(master, 1);
-	init_map_size(master);
-	if (master->mlx == NULL)
-		second_class_error_handler(master, 10);
-	launch_window(master);
-	fifth_class_error_handler(master, 0);
+	init_master_struct(&master);
+	if (perform_parssing(number_of_args, args, &master))
+		basic_error_handler(&master, 1);
+	init_map_size(&master);
+	if (master.mlx == NULL)
+		second_class_error_handler(&master, 10);
+	launch_window(&master);
+	fifth_class_error_handler(&master, 0);
 	return (0);
 }
